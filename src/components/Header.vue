@@ -1,16 +1,16 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <img src="../assets/logo.png" />
+    <h1>{{ siteTitle }}</h1>
     <h2>Dallas / Fort Worth Front-end Website Developer</h2>
-    <p></p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Header",
   props: {
-    msg: String
+    siteTitle: String
   }
 };
 </script>

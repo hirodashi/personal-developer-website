@@ -1,19 +1,24 @@
 <template>
   <div class="hello">
-    <img src="../assets/logo.png" />
+    <img :src="siteLogo" />
     <h1>{{ siteTitle }}</h1>
-    <h2>
-      Dallas / Fort Worth <br />
-      Front-end Website Developer
-    </h2>
+    <h2>{{ siteSubtitle }}</h2>
   </div>
 </template>
 
 <script>
+import siteLogo from "../assets/logo.png";
+
 export default {
   name: "Header",
   props: {
-    siteTitle: String
+    siteTitle: String,
+    siteSubtitle: String
+  },
+  computed: {
+    siteLogo: function() {
+      return siteLogo;
+    }
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header siteTitle="ZACHARY DURLAND" />
+    <Header :siteTitle="siteTitle" :siteSubtitle="siteSubtitle" :siteLogo="siteLogo" />
 
     <br>
     <hr>
@@ -16,9 +16,9 @@
               <strong
                 >
                 <a
-                  href="mailto:zacharydurland@gmail.com"
+                  :href="primaryEmail"
                   alt="Email Zachary Durland - zacharydurland@gmail.com">
-                  zacharydurland@gmail.com
+                  {{contact.email}}
                 </a>
               </strong>
             </p>
@@ -46,13 +46,14 @@
                 </strong>
             </p>
 
-            <p>
+            <p style="max-width: 700px; text-align:center; margin: 0 auto">
               This page function as both my portfolio and resume while also serving as
               an exercise in agile development. The generic repository for this project
               is tracked on Github, managed via Google Sheets and deployed via Heroku.
               This page will evolve to reflect project sprints and be progressively
               deployed to be as effective as possible, as soon as possible.
             </p>
+            <br>
             <p>
               <strong>Thank you for your interest.</strong>
             </p>
@@ -104,7 +105,7 @@
 
     </main>
 
-    <Footer siteTitle="ZACHARY DURLAND" />
+    <Footer siteTitle="siteTitle" />
 
   </div>
 </template>
@@ -112,11 +113,20 @@
 <script>
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import siteData from "./siteData";
 
 export default {
   name: "app",
   components: {
     Header, Footer
+  },
+  data: function() {
+    return siteData;
+  },
+  computed: {
+    primaryEmail: function(){
+      return 'mailto:' + this.email
+    }
   }
 };
 </script>

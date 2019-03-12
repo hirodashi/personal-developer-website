@@ -1,6 +1,9 @@
 {
-  "name": "hello-world",
+  "name": "zacharydurland.com",
   "version": "0.1.0",
+  "engines": {
+    "node": "8.12.0"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,7 +15,6 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.14",
     "express": "^4.16.4",
-    "mdbvue": "^5.1.1",
     "vue": "^2.6.6"
   },
   "devDependencies": {

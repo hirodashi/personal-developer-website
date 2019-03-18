@@ -206,12 +206,12 @@ export default {
       transform: rotate(0deg);
     }
     50% {
-      right: 10%;
+      right: 15%;
       transform: rotate(0deg);
     }
     100% {
       transform: rotate(180deg);
-      border-color: #ebebeb;
+      border-top: 20px solid cornflowerblue;
     }
   }
 

@@ -1,10 +1,8 @@
 <template>
-  <div id="app">
-    <Header :siteTitle="siteTitle" :siteSubtitle="siteSubtitle" :siteLogo="siteLogo" />
 
-    <br>
-    <hr>
-    <br>
+  <div id="app" :class="isScrolled">
+
+    <Header :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
 
     <main>
 
@@ -12,15 +10,12 @@
 
       <section id="intro">
 
+        <br>
+
+          <h1>Welcome to My Developer's Page</h1>
+
             <p>
-              <strong
-                >
-                <a
-                  :href="primaryEmail"
-                  alt="Email Zachary Durland - zacharydurland@gmail.com">
-                  {{contact.email}}
-                </a>
-              </strong>
+              This site is an ongoing project, following a progressive deployment methdology, implementing wireframes, design, and sprints. Check the resources below for more information on the progress of my devloper's website.
             </p>
 
             <p>
@@ -41,26 +36,21 @@
                   href="https://docs.google.com/spreadsheets/d/1PsFZaSO5tDe4Gzf87jtTJiB8r-9YeDDu-N7uI9yFl8M/edit?usp=sharing"
                   target="_blank"
                   alt="See the Agile Project Tracker on Google Sheets">
-                  See the Agile Project Tracker on Google Sheets
+                  Google Sheets Project Tracker
                   </a>
                 </strong>
             </p>
 
-            <p style="max-width: 700px; text-align:center; margin: 0 auto">
-              This page function as both my portfolio and resume while also serving as
-              an exercise in agile development. The generic repository for this project
-              is tracked on Github, managed via Google Sheets and deployed via Heroku.
-              This page will evolve to reflect project sprints and be progressively
-              deployed to be as effective as possible, as soon as possible.
-            </p>
-            <br>
+
             <p>
-              <strong>Thank you for your interest.</strong>
+              <a href="#resume" class="md-hidden icon-arrow-down"></a>
             </p>
 
-            <br />
+            <br>
 
-            <hr />
+            <br>
+
+            <hr>
 
           </section>
 
@@ -71,17 +61,21 @@
               HTML5, CSS3, JavasScript (ES6)
             </p>
 
+            <br>
+
             <h3>Libraries</h3>
             <p>
               ReactJS, VueJS, Express, JQuery, MongoDB
             </p>
+
+            <br>
 
             <h3>RELATED COMPETENCIES </h3>
             <p>
               FLUX, Responsive Design, Mobile-first design, OAuth authentication, Heroku, Git, Deployment, Adobe XD ( & suite ), inVision
             </p>
 
-
+            <br>
 
             <h3>EDUCATION & CERTIFICATES </h3>
             <p>
@@ -93,7 +87,6 @@
                 <li>The Complete Developer's Guide to MongoDB,</li>
                 <li>Node with React: Fullstack Web Development,</li>
                 <li>Vue JS Essentials with Vuex and Vue Router</li>
-                <li></li>
               </ul>
             </p>
 
@@ -105,7 +98,8 @@
 
     </main>
 
-    <Footer siteTitle="siteTitle" />
+    <Footer :siteTitle="siteData.siteTitle" />
+
 
   </div>
 </template>
@@ -114,52 +108,118 @@
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import siteData from "./siteData";
+import _ from 'lodash'
 
 export default {
   name: "app",
   components: {
     Header, Footer
   },
-  data: function() {
-    return siteData;
+  data: function(){
+    return {
+      siteData: siteData,
+      scrolled: 0
+    }
   },
   computed: {
-    primaryEmail: function(){
-      return 'mailto:' + this.email
+    mailTo: function(){
+      return 'mailto:' + siteData.contact.email
+    },
+    email: function(){
+      return siteData.contact.email
+    },
+    isScrolled() {
+      return this.scrolled > 1 ? "scrolled" : "";
     }
+  },
+  methods: {
+    handleScroll: _.debounce(function(){this.scrolled = window.scrollY},10),
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 };
+
 </script>
 
-<style>
-
-body {
-  margin: 0;
-}
 
 
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+
+
+
+
+<style lang="scss">
+
+  body {
+    margin: 0;
+    padding:0;
+  }
+
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #2c3e50;
+  }
+
+  p {
+    max-width: 768px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .icon-arrow-down {
+    position: fixed;
+    bottom: 25px;
+    right: 50%;
+    transform: translateX(50%);
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid cornflowerblue;
+    opacity: 90%;
+  }
+
+  #app {
+    &.scrolled {
+      .icon-arrow-down {
+        transform: rotate(180deg);
+        right: 15px;
+        animation-name: go-then-rotate-180;
+        animation-duration: 1s;
+      }
+    }
+  }
+
+  @keyframes go-then-rotate-180 {
+    0% {
+      right: 50%;
+      transform: rotate(0deg);
+    }
+    50% {
+      right: 10%;
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+section {
+  padding: 30px;
+  &#intro {
+    padding-top: 0
+  }
 }
 
 
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

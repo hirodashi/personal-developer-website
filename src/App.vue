@@ -211,6 +211,7 @@ export default {
     }
     100% {
       transform: rotate(180deg);
+      border-color: #ebebeb;
     }
   }
 

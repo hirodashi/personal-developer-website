@@ -132,22 +132,6 @@ nav > * {
         }
       }
     }
-    main {
-      section {
-      }
-    }
-    footer {
-    }
-    &.scrolled {
-      header {
-      }
-      main {
-        section {
-        }
-      }
-      footer {
-      }
-    }
   }
 }
 </style>

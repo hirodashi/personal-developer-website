@@ -2,7 +2,7 @@
 
   <div id="app" :class="isScrolled">
 
-    <Header :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
+    <Header id="header" :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
 
     <main>
 
@@ -41,11 +41,6 @@
                 </strong>
             </p>
 
-
-            <p>
-              <a href="#resume" class="md-hidden icon-arrow-down"></a>
-            </p>
-
             <br>
 
             <br>
@@ -78,6 +73,7 @@
             <br>
 
             <h3>EDUCATION & CERTIFICATES </h3>
+
             <p>
               <ul>
                 <li><strong>Bachelor of Fine Arts: Visual Communication ( University of Texas Arlington )</strong></li>
@@ -99,6 +95,9 @@
     </main>
 
     <Footer :siteTitle="siteData.siteTitle" />
+
+    <!-- handled programatically below -->
+    <a @click="scrollTo(arrowTargetAnchor)"  class="md-hidden icon-arrow-down"></a>
 
 
   </div>
@@ -130,10 +129,20 @@ export default {
     },
     isScrolled() {
       return this.scrolled > 1 ? "scrolled" : "";
-    }
+    },
+    arrowTargetAnchor() {
+      return this.scrolled > 50 ? "header" : "resume";
+    },
   },
   methods: {
     handleScroll: _.debounce(function(){this.scrolled = window.scrollY},10),
+    scrollTo(anchor){
+        const element = document.getElementById(anchor)
+        window.scroll({
+        behavior: 'smooth',
+        top: element.offsetTop
+      });
+    }
   },
   created () {
     window.addEventListener('scroll', this.handleScroll);
@@ -180,6 +189,7 @@ export default {
     bottom: 25px;
     right: 50%;
     transform: translateX(50%);
+    transform: rotate(0);
     display: block;
     width: 0;
     height: 0;
@@ -187,31 +197,15 @@ export default {
     border-right: 20px solid transparent;
     border-top: 20px solid cornflowerblue;
     opacity: 90%;
+    transition: all .5s;
   }
 
   #app {
     &.scrolled {
       .icon-arrow-down {
-        transform: rotate(180deg);
         right: 15px;
-        animation-name: go-then-rotate-180;
-        animation-duration: 1s;
+        transform: rotate(180deg);
       }
-    }
-  }
-
-  @keyframes go-then-rotate-180 {
-    0% {
-      right: 50%;
-      transform: rotate(0deg);
-    }
-    50% {
-      right: 15%;
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-      border-top: 20px solid cornflowerblue;
     }
   }
 

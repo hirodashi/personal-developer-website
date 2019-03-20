@@ -2,7 +2,7 @@
 
   <div id="app" :class="isScrolled">
 
-    <Header id="header" :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
+    <Header @scrollTo="scrollTo" id="header" :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
 
     <main>
 
@@ -136,10 +136,10 @@ export default {
   },
   methods: {
     handleScroll: _.debounce(function(){this.scrolled = window.scrollY},10),
-    scrollTo(anchor){
-        const element = document.getElementById(anchor)
-        window.scroll({
-        behavior: 'smooth',
+    scrollTo(anchor) {
+      const element = document.getElementById(anchor);
+      window.scroll({
+        behavior: "smooth",
         top: element.offsetTop
       });
     }

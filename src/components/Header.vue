@@ -11,7 +11,7 @@
               Contact Me
             </a>
 
-            <a href="#resume">Resume</a>
+            <a @click="$emit('scrollTo', 'resume')">Resume</a>
           </nav>
         </div>
       </div>
@@ -32,7 +32,8 @@ export default {
     siteSubtitle: String,
     email: String,
     mailTo: String,
-    scrolled: Number
+    scrolled: Number,
+    scrollTo
   },
   computed: {
     siteLogo() {

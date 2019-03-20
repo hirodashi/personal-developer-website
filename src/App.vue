@@ -2,7 +2,7 @@
 
   <div id="app" :class="isScrolled">
 
-    <Header @scrollTo="scrollTo" id="header" :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
+    <Hero @scrollTo="scrollTo" :scrolled="scrolled" :mailTo="mailTo" :email="email" :siteTitle="siteData.siteTitle" :siteSubtitle="siteData.siteSubtitle" :siteLogo="siteData.siteLogo" />
 
     <main>
 
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue";
+import Hero from "./components/Hero.vue";
 import Footer from "./components/Footer.vue";
 import siteData from "./siteData";
 import _ from 'lodash'
@@ -112,7 +112,7 @@ import _ from 'lodash'
 export default {
   name: "app",
   components: {
-    Header, Footer
+    Hero, Footer
   },
   data: function(){
     return {
@@ -131,7 +131,7 @@ export default {
       return this.scrolled > 1 ? "scrolled" : "";
     },
     arrowTargetAnchor() {
-      return this.scrolled > 50 ? "header" : "resume";
+      return this.scrolled > 50 ? "top" : "resume";
     },
   },
   methods: {
@@ -140,7 +140,7 @@ export default {
       const element = document.getElementById(anchor);
       window.scroll({
         behavior: "smooth",
-        top: element.offsetTop
+        top: anchor === 'header' || anchor === 'top' || anchor === 'hero' ? element.offsetTop : element.offsetTop - 100
       });
     }
   },
@@ -208,13 +208,6 @@ export default {
       }
     }
   }
-
-section {
-  padding: 30px;
-  &#intro {
-    padding-top: 0
-  }
-}
 
 
 </style>

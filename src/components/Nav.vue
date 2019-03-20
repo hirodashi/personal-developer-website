@@ -46,7 +46,7 @@ export default {
       return this.email;
     },
     headerClass() {
-      return this.scrolled > 25 ? "closed" : "open";
+      return this.scrolled > 100 ? "fixed" : "";
     }
   },
   methods: {}
@@ -63,6 +63,7 @@ nav > * {
 
 #app {
   header {
+    background-color: white;
     > .container {
       #headerContents {
         display: flex;
@@ -110,6 +111,7 @@ nav > * {
     header {
       > .container {
         padding: 25px;
+        height: 50vh;
         #headerContents {
           display: flex;
           justify-content: space-around;
@@ -119,7 +121,8 @@ nav > * {
           }
           #headerLogo {
             position: static;
-            width: 30%;
+            height: 200px;
+            width: 200px;
           }
           #headerTitles {
             position: static;
@@ -128,6 +131,46 @@ nav > * {
             }
             #siteSubtitle {
               font-size: 1.5rem;
+            }
+          }
+        }
+      }
+      &.fixed {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+        position: fixed;
+        width: 100%;
+        > .container {
+          height: unset;
+          padding: 15px;
+          #headerContents {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            > * {
+              margin-right: 15px;
+            }
+            #headerLogo {
+              position: static;
+              width: 50px;
+              height: 50px;
+            }
+            #headerTitles {
+              position: static;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              & > * {
+                margin-right: 25px;
+              }
+              #siteTitle {
+                font-size: 1rem;
+              }
+              #siteSubtitle {
+                font-size: 0.75rem;
+              }
+            }
+            nav {
+              margin-left: auto;
             }
           }
         }

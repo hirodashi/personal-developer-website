@@ -1,7 +1,6 @@
 <template>
   <footer class="hello">
-    <img src="../assets/logo.png" />
-    <h4>{{ siteTitle }}</h4>
+    <p>{{ siteTitle }}</p>
     <p>Dallas / Fort Worth Front-end Website Developer</p>
     <p>
       <ul>
@@ -34,14 +33,14 @@ footer {
 }
 
 ul {
-  margin: 0 ;
+  margin: 0;
   padding: 0;
 }
 
 ul li {
   list-style-type: none;
   display: inline-block;
-  margin: 0 5px;
+  margin-right: 15px;
 }
 
 </style>

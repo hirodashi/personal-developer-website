@@ -8,85 +8,78 @@
 
       <b-container>
 
-      <section id="intro">
+          <section id="portfolio">
 
-        <br>
-
-          <h1>Welcome to My Developer's Page</h1>
-
-            <p>
-              This site is an ongoing project, following a progressive deployment methdology, implementing wireframes, design, and sprints. Check the resources below for more information on the progress of my devloper's website.
-            </p>
-
-            <p>
-              <strong
-                >
-                <a
-                  href="https://github.com/hirodashi/personal-developer-website"
-                  target="_blank"
-                  alt="See the GitHub Repository">
-                  See the GitHub Repository
-                </a>
-              </strong>
-            </p>
-
-            <p>
-              <strong>
-                <a
-                  href="https://docs.google.com/spreadsheets/d/1PsFZaSO5tDe4Gzf87jtTJiB8r-9YeDDu-N7uI9yFl8M/edit?usp=sharing"
-                  target="_blank"
-                  alt="See the Agile Project Tracker on Google Sheets">
-                  Google Sheets Project Tracker
-                  </a>
-                </strong>
-            </p>
+            <h2>Portfolio</h2>
 
             <br>
 
-            <br>
-
-            <hr>
+            <article id="#vueTodoList">
+              <b-row>
+                <b-col md="6">
+                  <iframe height="400" style="width: 100%;" scrolling="no" title="Todo List With Local Storage - Vue" src="//codepen.io/hirodashi/embed/roPdyO/?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+                  See the Pen <a href='https://codepen.io/hirodashi/pen/roPdyO/'>Todo List With Local Storage - Vue</a> by Zach
+                  (<a href='https://codepen.io/hirodashi'>@hirodashi</a>) on <a href='https://codepen.io'>CodePen</a>.
+                  </iframe>
+                  <br>
+                  <br>
+                </b-col>
+                <b-col md="6">
+                  <h2>Vue-do</h2>
+                  <h3>Data-driven, persistant to-dos.</h3>
+                  <p>This Vue app takes a comma separated list of todos and parses them into separate items. Knock out some tasks, or add them back if it ends up that you were too hasty. Afraid to close your browser? Fear not, with HTML5 local storage your todos are presistant and waiting for you to return.</p>
+                </b-col>
+              </b-row>
+            </article>
 
           </section>
 
           <section id="resume">
 
-            <h3>SKILLS</h3>
-            <p>
-              HTML5, CSS3, JavasScript (ES6)
-            </p>
+            <h2> Resume </h2>
 
             <br>
 
-            <h3>Libraries</h3>
-            <p>
-              ReactJS, VueJS, Express, JQuery, MongoDB
-            </p>
+            <article id="skills">
+              <h3>SKILLS</h3>
+              <p>
+                HTML5, CSS3, JavasScript (ES6)
+              </p>
+            </article>
 
-            <br>
+            <article id="libraries">
+              <h3>Libraries</h3>
+              <p>
+                ReactJS, VueJS, Express, JQuery, MongoDB
+              </p>
+            </article>
 
-            <h3>RELATED COMPETENCIES </h3>
-            <p>
-              FLUX, Responsive Design, Mobile-first design, OAuth authentication, Heroku, Git, Deployment, Adobe XD ( & suite ), inVision
-            </p>
 
-            <br>
+            <article id="competencies">
+              <h3>RELATED COMPETENCIES </h3>
+              <p>
+                FLUX, Responsive Design, Mobile-first design, OAuth authentication, Heroku, Git, Deployment, Adobe XD ( & suite ), inVision
+              </p>
+            </article>
 
-            <h3>EDUCATION & CERTIFICATES </h3>
+            <article id="education">
 
-            <p>
-              <ul>
-                <li><strong>Bachelor of Fine Arts: Visual Communication ( University of Texas Arlington )</strong></li>
-                <li>ES6 Javascript: The Complete Developer's Guide,</li>
-                <li>Modern React with Redux,</li>
-                <li>Advanced React,</li>
-                <li>The Complete Developer's Guide to MongoDB,</li>
-                <li>Node with React: Fullstack Web Development,</li>
-                <li>Vue JS Essentials with Vuex and Vue Router</li>
-              </ul>
-            </p>
+              <h3>EDUCATION & CERTIFICATES </h3>
 
-            <br>
+              <p>
+                <ul>
+                  <li><strong>Bachelor of Fine Arts: Visual Communication ( University of Texas Arlington )</strong></li>
+                  <li>ES6 Javascript: The Complete Developer's Guide,</li>
+                  <li>Modern React with Redux,</li>
+                  <li>Advanced React,</li>
+                  <li>The Complete Developer's Guide to MongoDB,</li>
+                  <li>Node with React: Fullstack Web Development,</li>
+                  <li>Vue JS Essentials with Vuex and Vue Router</li>
+                </ul>
+              </p>
+
+            </article>
+
 
           </section>
 
@@ -131,7 +124,7 @@ export default {
       return this.scrolled > 1 ? "scrolled" : "";
     },
     arrowTargetAnchor() {
-      return this.scrolled > 50 ? "top" : "resume";
+      return this.scrolled > 50 ? "top" : "portfolio";
     },
   },
   methods: {
@@ -140,7 +133,8 @@ export default {
       const element = document.getElementById(anchor);
       window.scroll({
         behavior: "smooth",
-        top: anchor === 'header' || anchor === 'top' || anchor === 'hero' ? element.offsetTop : element.offsetTop - 100
+        top: anchor === 'header' || anchor === 'top' || anchor === 'hero' ? element.offsetTop : element.offsetTop,
+        left: 0
       });
     }
   },
@@ -176,12 +170,19 @@ export default {
     color: #2c3e50;
   }
 
-  p {
-    max-width: 768px;
-  }
-
   h1 {
     font-size: 2rem;
+  }
+
+  h2 {
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase
+  }
+
+  article h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
   }
 
   .icon-arrow-down {
@@ -207,6 +208,11 @@ export default {
         transform: rotate(180deg);
       }
     }
+  }
+
+  section {
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
 

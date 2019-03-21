@@ -9,7 +9,25 @@
           <a id="primaryEmail" :href="heroMailTo" alt="Contact">
             Contact Me
           </a>
-          <a @click="$emit('scrollTo', 'resume')">Resume</a>
+          <a
+            href="https://github.com/hirodashi/personal-developer-website"
+            target="_blank"
+            alt="See the GitHub Repository"
+          >
+            See the Git
+          </a>
+
+          <a
+            href="https://docs.google.com/spreadsheets/d/1PsFZaSO5tDe4Gzf87jtTJiB8r-9YeDDu-N7uI9yFl8M/edit?usp=sharing"
+            target="_blank"
+            alt="See the Agile Project Tracker on Google Sheets"
+          >
+            Project Tracker
+          </a>
+          <a class="anchor" @click="$emit('scrollTo', 'portfolio')"
+            >Portfolio</a
+          >
+          <a class="anchor" @click="$emit('scrollTo', 'resume')">Resume</a>
         </nav>
       </div>
     </b-container>
@@ -59,23 +77,18 @@ nav > * {
   .hero {
     background-color: white;
     #heroContents {
-      padding: 15px 0;
+      padding: 15px;
       display: flex;
+      justify-content: space-between;
       > * {
         margin-right: 15px;
       }
       #heroLogo {
-        position: relative;
-        left: -50px;
-        top: -50px;
-        width: 25vh;
-        height: 25vh;
+        width: 20vw;
+        height: 20vw;
+        margin-right: 15px;
       }
       #heroTitles {
-        line-height: 45px;
-        position: relative;
-        right: 15px;
-        top: 15px;
       }
       #siteTitle {
         font-size: 1.25rem;
@@ -84,13 +97,28 @@ nav > * {
         font-size: 0.75rem;
       }
       nav {
+        display: flex;
+        flex-wrap: wrap;
         > * {
-          padding: 7px 12px;
+          display: block;
+          padding: 0 10px;
           margin-right: 15px;
-          background-color: cornflowerblue;
+          margin-bottom: 15px;
+          background-color: gray;
           color: white;
-          border-radius: 20px;
+          border: 3px solid gray;
           font-size: 1rem;
+          transition: all 0.15s ease-out;
+          text-decoration: none;
+          &:hover {
+            background-color: white !important;
+            border: 3px solid darkgray !important;
+            color: darkgray !important;
+          }
+        }
+        .anchor {
+          background-color: cornflowerblue;
+          border-color: cornflowerblue;
         }
       }
     }
@@ -103,7 +131,7 @@ nav > * {
       background-color: white;
       #heroContents {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         align-items: center;
         height: 50vh;
         padding: 60px 0;
@@ -123,16 +151,6 @@ nav > * {
         }
         #siteSubtitle {
           font-size: 1rem;
-        }
-        nav {
-          > * {
-            padding: 7px 12px;
-            margin-right: 15px;
-            background-color: cornflowerblue;
-            color: white;
-            border-radius: 20px;
-            font-size: 1rem;
-          }
         }
       }
     }

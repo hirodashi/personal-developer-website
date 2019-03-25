@@ -92,6 +92,7 @@ nav > * {
       }
       #siteTitle {
         font-size: 1.25rem;
+        font-weight: 900;
       }
       #siteSubtitle {
         font-size: 0.75rem;

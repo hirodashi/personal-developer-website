@@ -9,7 +9,18 @@
 
       <section id="summary">
 
-        <h2>It is my goal to bring UX and UI designs to life in cross-platform and performant front-end implementations. While each project often requires a specific solution, I am currently focusing on Vue and React as a means to efficiently build performant web applications. Whether your organization work in Angular or other library or framework, I have proven to be adaptable and eagerly learn new technologies.</h2>
+        <br>
+        <br>
+
+        <h2>It is my goal to bring UX and UI designs to life in cross-platform and performant front-end implementations. While each project often requires a specific solution, I am currently focusing on Vue and React as a means to efficiently build performant web applications. Whether your organization works in Angular, or other library or framework, I have proven to be adaptable and eagerly learn new technologies.
+
+          <br>
+          <br>
+
+          Thank you for your interest.</h2>
+
+        <br>
+        <br>
 
       </section>
 
@@ -58,6 +69,24 @@
 
 
 
+        <article id="bellFlightMotion" class="full-width bg-black"  style="margin-top: 30px;  margin-bottom: 30px; text-align:center; padding-top: 75px; padding-bottom: 0">
+          <div class="container">
+          <h2 style="font-size: 5em">Making Do</h2>
+          <h3>...or how bellflight.com got animated.</h3>
+          <p style="margin: 0 auto;">Despite main JavaScript files being secured by I.T., I decided to pursue a more energetic version of Bell's evolving website ( possibly redesigned by Fantasy by now ). Having recently gone through a brand refresh, I seeked ways to elevate page sections, capture attention, and conduct the brand's mantra of going above and beyond flight. Although not ideal, by manipulating initial styles and bolting on sets of custom scroll trigger animations, the site has come to life like never before.</p>
+        </div>
+            <br>
+            <br>
+            <br>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5fSe9VRnfU8" allowfullscreen muted></iframe>
+            </div>
+        </article>
+
+
+
+
+
         <article id="#queryNScroll">
           <b-row>
             <b-col md="6">
@@ -74,6 +103,15 @@
             </b-col>
           </b-row>
         </article>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -282,6 +320,12 @@ h3 {
     font-weight: bold;
 }
 
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: calc(-1 * (100vw - 100%) / 2);
+}
+
 .icon-arrow-down {
     position: fixed;
     bottom: 25px;
@@ -314,6 +358,13 @@ section {
 article {
     padding: 2rem 0;
 }
+
+.bg-black {
+  background-color: black;
+  color: white;
+}
+
+
 
 #summary h2 {
   line-height: 29px;

@@ -4,7 +4,7 @@ a project to catalog the development of my personal developer's website
 
 # Live Example
 
-https://www.zacharydurland.com
+http://www.zacharydurland.com
 
 # Agile Project Tracker ( via Google Sheets )
 
